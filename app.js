@@ -7,6 +7,12 @@ const getLocation = () => {
     const longitude = position.coords.longitude;
     const q = latitude + "," + longitude;
 
+    // remove loading animation
+    document.querySelector(".container").style.animation = "none";
+    document.querySelector(".today").style.visibility = "visible";
+    document.querySelector(".current").style.visibility = "visible";
+    document.querySelector(".forecast").style.visibility = "visible";
+
     fetchData(q);
   });
 };
@@ -40,7 +46,7 @@ const getData = (data) => {
 
   let current = time + 2 > 23 ? time + 2 - 24 : time + 2;
   let currentData = time + 2 > 23 ? nextDay : today;
-  //renderNextWeather(timeObj)
+
   for (let i = 0; i < 8; i++) {
     const timeObj = currentData[current];
     renderNextWeather(timeObj);
@@ -53,8 +59,6 @@ const getData = (data) => {
   // render data
   renderLocalData(name, localtime, sunrise, sunset);
   renderCurrentWeather(currentObj);
-
-  console.log(data);
 };
 
 const renderLocalData = (name, localtime, sunrise, sunset) => {

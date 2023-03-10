@@ -18,11 +18,51 @@ body {
   display: flex;
   flex-direction: column;
   max-width: 95vw;
+  animation: mymove 4s infinite;
+}
+
+@keyframes mymove {
+  0% {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    transform: translateY(100px);
+    background-color: rgb(80, 80, 80);
+  }
+  25% {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    transform: translateY(150px);
+    background-color: rgb(0, 0, 0);
+  }
+  50% {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    transform: translateY(200px);
+    background-color: rgb(80, 80, 80);
+  }
+  75% {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    transform: translateY(150px);
+    background-color: rgb(0, 0, 0);
+  }
+  100% {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    transform: translateY(100px);
+    background-color: rgb(80, 80, 80);
+  }
 }
 
 .today {
   display: flex;
   justify-content: space-between;
+  visibility: hidden;
 }
 
 .today i {
@@ -44,6 +84,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem;
+  visibility: hidden;
 }
 
 .current ul {
@@ -66,6 +107,7 @@ body {
 .forecast {
   display: flex;
   flex-wrap: wrap;
+  visibility: hidden;
 }
 
 .card {

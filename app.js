@@ -13,7 +13,7 @@ const getLocation = () => {
 
 const fetchData = (location) => {
   fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=6a70e60eb18c4ec5ab2135858230903&q=${location}&aqi=no&days=3&lang=hu`
+    `https://api.weatherapi.com/v1/forecast.json?key=6a70e60eb18c4ec5ab2135858230903&q=${location}&aqi=no&days=2&lang=hu`
   )
     .then((response) => response.json())
     .then((data) => getData(data))
@@ -23,7 +23,7 @@ const fetchData = (location) => {
 const getData = (data) => {
   // local data
   const { name, localtime } = data.location;
-  const time = localtime.slice(localtime.length - 5, 2);
+
   let { sunrise, sunset } = data.forecast.forecastday[0].astro;
 
   sunrise = sunrise.slice(0, -2).trim();
@@ -33,7 +33,22 @@ const getData = (data) => {
   // current
   const currentObj = data.current;
 
-  //next
+  // next
+  let time = Number(localtime.slice(-5).slice(0, 2));
+  const today = data.forecast.forecastday[0].hour;
+  const nextDay = data.forecast.forecastday[1].hour;
+
+  let current = time + 2 > 23 ? time + 2 - 24 : time + 2;
+  let currentData = time + 2 > 23 ? nextDay : today;
+  //renderNextWeather(timeObj)
+  for (let i = 0; i < 8; i++) {
+    const timeObj = currentData[current];
+    renderNextWeather(timeObj);
+    if (current + 2 > 23) {
+      currentData = nextDay;
+    }
+    current = current + 2 > 23 ? current + 2 - 24 : current + 2;
+  }
 
   // render data
   renderLocalData(name, localtime, sunrise, sunset);
@@ -121,7 +136,7 @@ const renderNextWeather = (timeObj) => {
     </ul>  
     `;
 
-  forecast.appendChild();
+  forecast.appendChild(card);
 };
 
 getLocation();

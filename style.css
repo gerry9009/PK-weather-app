@@ -73,6 +73,7 @@ body {
   border-radius: 3px;
   text-align: center;
   background: rgba(255, 255, 255, 0.4);
+  min-width: 115px;
 }
 
 .card h5 {

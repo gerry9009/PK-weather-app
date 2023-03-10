@@ -2,11 +2,10 @@
 
 _API_
 
-- https://openweathermap.org/
+- https://www.weatherapi.com/docs/
 
 _Technologies_
 
 - Bootstrap
 - JavaScript
 - HTML geolocation API https://www.w3schools.com/html/html5_geolocation.asp
-- https://giphy.com

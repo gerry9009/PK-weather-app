@@ -9,3 +9,5 @@ _Technologies_
 - Bootstrap
 - JavaScript
 - HTML geolocation API https://www.w3schools.com/html/html5_geolocation.asp
+
+https://www.weatherapi.com/api-explorer.aspx
